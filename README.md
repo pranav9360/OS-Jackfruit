@@ -100,53 +100,53 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 1 — Two containers running under one supervisor**
 
-<img width="1280" height="126" alt="image" src="https://github.com/user-attachments/assets/3c856421-4c23-4ad3-aa3b-20a2563def97" />
+<img width="1280" height="126" alt="image" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/111.jpeg" />
 
 
 
 **Screenshot 2 — ps output showing container metadata**
 
-<img width="1280" height="343" alt="screenshot2" src="https://github.com/user-attachments/assets/50b7988d-7558-4e62-998f-999d89f1aedb" />
+<img width="1280" height="343" alt="screenshot2" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/222.jpeg" />
 
 
 
 **Screenshot 3 — Logging pipeline proof**
 
-<img width="1280" height="800" alt="screenshot3" src="https://github.com/user-attachments/assets/e73a5b19-facf-41fb-a88f-55a095d36ef3" />
+<img width="1280" height="800" alt="screenshot3" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/333.jpeg" />
 
 
 
 **Screenshot 4 — CLI command and supervisor response**
 
-<img width="1600" height="180" alt="WhatsApp Image 2026-04-17 at 10 47 29 PM" src="https://github.com/user-attachments/assets/1f28b9fa-13c2-47be-ab9c-2afc3a963990" />
+<img width="1600" height="180" alt="WhatsApp Image 2026-04-17 at 10 47 29 PM" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/444.jpeg" />
 
 
 
 
 **Screenshot 5 — Soft limit warning in dmesg**
 
-<img width="1280" height="202" alt="screenshot5" src="https://github.com/user-attachments/assets/57fe6ed6-40ff-47b0-8d80-1eada3a0baa2" />
+<img width="1280" height="202" alt="screenshot5" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/555.jpeg" />
 
 
 
 **Screenshot 6 — Hard limit kill in dmesg**
 
-<img width="1280" height="202" alt="screenshot6" src="https://github.com/user-attachments/assets/689e1d3a-cd68-4265-8aa8-9dd52bb66fc0" />
+<img width="1280" height="202" alt="screenshot6" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/666.jpeg" />
 
 
 
 **Screenshot 7 — Scheduler experiment results**
 
 **part - 1**
-<img width="1280" height="589" alt="screenshot7 1" src="https://github.com/user-attachments/assets/e85dc382-5131-41a6-8f0c-710b185200df" />
+<img width="1280" height="589" alt="screenshot7 1" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/777.jpeg" />
 
 **part - 2**
-<img width="1280" height="401" alt="screenshot7 2" src="https://github.com/user-attachments/assets/52648142-97ff-4e49-ab26-09e2833bb0b9" />
+<img width="1280" height="401" alt="screenshot7 2" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/888.jpeg" />
 
 
 **Screenshot 8 — Clean teardown, no zombies**
 
-<img width="1280" height="202" alt="screenshot8" src="https://github.com/user-attachments/assets/174ec949-0832-4fb3-84b4-ce5d75daf131" />
+<img width="1280" height="202" alt="screenshot8" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/999.jpeg" />
 
 
 
