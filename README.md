@@ -69,8 +69,8 @@ sudo ./engine supervisor ./rootfs-base
 ### Container operations (Terminal 2)
 
 ```bash
-sudo ./engine start alpha ./rootfs-base /bin/sh
-sudo ./engine start test1 ./rootfs-base /bin/hostname
+sudo ./engine start alpha ./rootfs-alpha /bin/sh
+sudo ./engine start test1 ./rootfs-beta /bin/hostname
 sudo ./engine ps
 sudo ./engine logs alpha
 sudo ./engine stop alpha
