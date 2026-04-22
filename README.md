@@ -70,7 +70,7 @@ sudo ./engine supervisor ./rootfs-base
 
 ```bash
 sudo ./engine start alpha ./rootfs-base /bin/sh
-sudo ./engine run test1 ./rootfs-base /bin/hostname
+sudo ./engine start test1 ./rootfs-base /bin/hostname
 sudo ./engine ps
 sudo ./engine logs alpha
 sudo ./engine stop alpha
@@ -83,7 +83,7 @@ sudo ./engine stop alpha
 ```bash
 sudo cp memory_hog ./rootfs-base/
 sudo ./engine start memtest ./rootfs-base /memory_hog --soft-mib 5 --hard-mib 10
-dmesg | grep container_monitor
+sudo dmesg | grep container_monitor
 ```
 
 👉 When the hard limit is exceeded, the kernel module sends **SIGKILL** to terminate the container.
@@ -98,7 +98,7 @@ sudo cp io_pulse ./rootfs-base/
 
 # Experiment 1: Different priorities
 sudo ./engine start cpu_hi ./rootfs-base /cpu_hog --nice 0
-sudo ./engine start cpu_lo ./rootfs-base /cpu_hog --nice 19
+sudo ./engine start cpu_low ./rootfs-base /cpu_hog --nice 10
 sleep 12
 cat logs/cpu_hi.log
 cat logs/cpu_lo.log
@@ -118,7 +118,7 @@ cat logs/io_w.log
 ```bash
 sudo pkill engine
 sudo rmmod monitor
-dmesg | grep container_monitor | tail -5
+sudo dmesg | grep container_monitor | tail -5
 ```
 
 ---
