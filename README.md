@@ -127,7 +127,8 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 1 — Two containers running under one supervisor**
 
-<img width="677" height="617" alt="image" src="https://github.com/user-attachments/assets/0915b05e-38ff-49f5-a86a-d826101572b2" />
+<img width="818" height="88" alt="111" src="https://github.com/user-attachments/assets/caf2e22a-df88-4ae1-8d9f-2094a2d65a56" />
+
 
 
 ---
