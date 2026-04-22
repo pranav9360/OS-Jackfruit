@@ -133,7 +133,7 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 2 — ps output showing container metadata**
 
-<img width="1280" height="343" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/222.jpeg" />
+<img width="1280" height="800" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/333.jpeg" />
 
 ---
 
@@ -151,7 +151,7 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 5 — Soft limit warning in dmesg**
 
-<img width="1280" height="202" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/555.jpeg" />
+<img width="1280" height="202" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/666.jpeg" />
 
 ---
 
