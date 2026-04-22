@@ -145,7 +145,8 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 4 — CLI command and supervisor response**
 
-<img width="1600" height="180" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/444.jpeg" />
+<img width="1063" height="207" alt="Screenshot 2026-04-15 192257" src="https://github.com/user-attachments/assets/194c4dd2-394e-4c9b-b853-4f99582feb0a" />
+
 
 ---
 
