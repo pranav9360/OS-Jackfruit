@@ -350,12 +350,14 @@ Even though exact values may differ, the relative behavior (CPU-bound vs I/O-bou
 
 ## 6. Scheduler Experiment Results
 
-In our experiments, we compared two CPU-bound containers with different priorities:
+### Experiment: CPU-bound containers with different priorities
 
-* `cpu_high` → higher priority
-* `cpu_low` → lower priority
+We ran two CPU-bound containers using the same workload (`cpu_hog`) but with different nice values.
 
-Both containers ran the same CPU-intensive program (`cpu_hog`), and we observed their outputs through logs.
+| Container | Nice Value | Duration | Observation                                 |
+| --------- | ---------- | -------- | ------------------------------------------- |
+| cpu_high  | 0          | ~20s     | Higher CPU usage, faster accumulator growth |
+| cpu_low   | 10         | ~20s     | Lower CPU usage, slower accumulator growth  |
 
 ---
 
@@ -363,51 +365,48 @@ Both containers ran the same CPU-intensive program (`cpu_hog`), and we observed 
 
 From the logs:
 
-* Both containers continuously printed:
+* Both containers ran for approximately the same duration.
+* The output lines showed:
 
   ```
   cpu_hog alive elapsed=X accumulator=Y
   ```
-* The accumulator value represents the amount of computation done.
+* The accumulator represents the amount of computation performed.
 
-Comparing the two:
+Comparing the outputs:
 
-* `cpu_high` showed **faster growth in accumulator values**
-* `cpu_low` showed **slower progression over time**
-* `cpu_high` completed iterations more aggressively within the same time window
-
-This indicates that the higher priority container received **more CPU time** than the lower priority one.
+* `cpu_high` showed **faster increase in accumulator values**
+* `cpu_low` progressed more slowly over time
+* This indicates that `cpu_high` received **more CPU time slices**
 
 ---
 
 ### Analysis
 
-This behavior matches the working of the Linux **Completely Fair Scheduler (CFS)**:
+This behavior matches the Linux **Completely Fair Scheduler (CFS)**:
 
-* CFS assigns CPU time based on process weight derived from the `nice` value
-* Lower nice (higher priority) → higher weight → more CPU share
-* Higher nice (lower priority) → lower weight → less CPU share
+* CFS assigns CPU time based on process weight derived from `nice` values
+* Lower nice → higher weight → more CPU share
+* Higher nice → lower weight → less CPU share
 
-Since both workloads were CPU-bound (always runnable):
+Since both workloads were CPU-bound and always runnable:
 
-* The scheduler continuously distributed CPU between them
+* The scheduler continuously divided CPU time between them
 * The higher priority container (`cpu_high`) was scheduled more frequently
-* The lower priority container (`cpu_low`) received less CPU time
+* The lower priority container (`cpu_low`) received fewer CPU slices
 
 ---
 
 ### Conclusion
 
-From this experiment, we can conclude that:
+From this experiment, we conclude:
 
-* Linux scheduling is **priority-aware**
-* CPU-bound processes compete directly for CPU time
-* Processes with higher priority consistently perform more computation
+* CPU scheduling in Linux is **priority-aware**
+* CPU-bound processes directly compete for CPU resources
+* Higher priority processes perform more computation in the same time frame
 
-This demonstrates how the Linux scheduler balances:
+This demonstrates key scheduling goals:
 
 * **Fairness** → CPU distributed based on weights
 * **Throughput** → CPU fully utilized by runnable processes
-
-The observed behavior aligns with the expected design of the CFS scheduler.
-
+* **Efficiency** → minimal idle CPU time
