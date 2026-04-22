@@ -127,7 +127,8 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 1 — Two containers running under one supervisor**
 
-<img width="1280" height="126" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/111.jpeg" />
+<img width="677" height="617" alt="image" src="https://github.com/user-attachments/assets/0915b05e-38ff-49f5-a86a-d826101572b2" />
+
 
 ---
 
