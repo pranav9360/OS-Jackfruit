@@ -283,9 +283,68 @@ Overall, the behavior we observed matched the expected working of the Linux sche
 
 ## 5. Design Decisions and Tradeoffs
 
-* No network namespace (simplifies implementation)
-* Single-threaded supervisor (simpler, safe)
-* Kernel module ensures accurate enforcement
+### Namespace Isolation
+
+**Choice:**
+We used PID, UTS, and mount namespaces along with `chroot()` for isolation.
+
+**Tradeoff:**
+We did not implement network namespace isolation, so all containers share the host network stack. This means there can be port conflicts between containers.
+
+**Justification:**
+Setting up network namespaces requires additional configuration like virtual interfaces and bridges, which would significantly increase complexity. For this project, focusing on process and filesystem isolation was sufficient to demonstrate core container concepts.
+
+---
+
+### Supervisor Architecture
+
+**Choice:**
+We designed a single long-running supervisor process to manage all containers using a UNIX domain socket.
+
+**Tradeoff:**
+The supervisor is single-threaded for handling CLI requests, so if one operation takes time (like reading logs), other requests may get delayed.
+
+**Justification:**
+A single-threaded design is simpler and easier to manage, especially when dealing with signals like `SIGCHLD`. It reduces synchronization issues and makes the system more predictable, which is important for correctness in a project like this.
+
+---
+
+### IPC and Logging
+
+**Choice:**
+We used pipes to capture container output and a producer-consumer model for logging.
+
+**Tradeoff:**
+Each container requires its own pipe, which increases the number of file descriptors. Also, the buffer size is limited, so very high output could cause delays.
+
+**Justification:**
+Pipes are a natural and simple way to capture `stdout` and `stderr`. They integrate well with `dup2()` and automatically handle EOF when the container exits. The producer-consumer model ensures logs are written efficiently without blocking the container.
+
+---
+
+### Kernel Monitor
+
+**Choice:**
+We implemented memory monitoring and enforcement in a kernel module.
+
+**Tradeoff:**
+Writing kernel code is more complex and riskier compared to user-space code. Bugs in kernel modules can affect system stability.
+
+**Justification:**
+The kernel has direct access to process memory information, allowing accurate RSS measurement. It can also enforce limits immediately without delays, which is not possible in user space due to scheduling and race conditions.
+
+---
+
+### Scheduling Experiments
+
+**Choice:**
+We used simple CPU-bound and I/O-bound workloads (`cpu_hog`, `io_pulse`) to observe scheduling behavior.
+
+**Tradeoff:**
+The results are dependent on the system environment and may vary slightly across machines.
+
+**Justification:**
+Even though exact values may differ, the relative behavior (CPU-bound vs I/O-bound) clearly demonstrates how the Linux scheduler works. This approach keeps the experiment simple while still effectively showing scheduling principles.
 
 ---
 
