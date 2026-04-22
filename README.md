@@ -166,9 +166,10 @@ dmesg | grep container_monitor | tail -5
 
 **Screenshot 7 — Scheduler experiment results**
 
-<img width="1280" height="589" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/777.jpeg" />
+<img width="712" height="590" alt="image" src="https://github.com/user-attachments/assets/6c46d7a3-e061-4851-83fb-9fe4bf669458" />
 
-<img width="1280" height="401" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/888.jpeg" />
+<img width="770" height="616" alt="image" src="https://github.com/user-attachments/assets/9c208a5e-646f-4d8b-8fe3-66f170104179" />
+
 
 ---
 
