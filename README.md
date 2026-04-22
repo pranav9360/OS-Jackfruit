@@ -350,5 +350,64 @@ Even though exact values may differ, the relative behavior (CPU-bound vs I/O-bou
 
 ## 6. Scheduler Experiment Results
 
-* Higher priority → more CPU share
-* I/O-bound processes remain responsive
+In our experiments, we compared two CPU-bound containers with different priorities:
+
+* `cpu_high` → higher priority
+* `cpu_low` → lower priority
+
+Both containers ran the same CPU-intensive program (`cpu_hog`), and we observed their outputs through logs.
+
+---
+
+### Observations from Output
+
+From the logs:
+
+* Both containers continuously printed:
+
+  ```
+  cpu_hog alive elapsed=X accumulator=Y
+  ```
+* The accumulator value represents the amount of computation done.
+
+Comparing the two:
+
+* `cpu_high` showed **faster growth in accumulator values**
+* `cpu_low` showed **slower progression over time**
+* `cpu_high` completed iterations more aggressively within the same time window
+
+This indicates that the higher priority container received **more CPU time** than the lower priority one.
+
+---
+
+### Analysis
+
+This behavior matches the working of the Linux **Completely Fair Scheduler (CFS)**:
+
+* CFS assigns CPU time based on process weight derived from the `nice` value
+* Lower nice (higher priority) → higher weight → more CPU share
+* Higher nice (lower priority) → lower weight → less CPU share
+
+Since both workloads were CPU-bound (always runnable):
+
+* The scheduler continuously distributed CPU between them
+* The higher priority container (`cpu_high`) was scheduled more frequently
+* The lower priority container (`cpu_low`) received less CPU time
+
+---
+
+### Conclusion
+
+From this experiment, we can conclude that:
+
+* Linux scheduling is **priority-aware**
+* CPU-bound processes compete directly for CPU time
+* Processes with higher priority consistently perform more computation
+
+This demonstrates how the Linux scheduler balances:
+
+* **Fairness** → CPU distributed based on weights
+* **Throughput** → CPU fully utilized by runnable processes
+
+The observed behavior aligns with the expected design of the CFS scheduler.
+
