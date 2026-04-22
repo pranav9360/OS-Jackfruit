@@ -152,13 +152,13 @@ dmesg | grep container_monitor | tail -5
 
 ---
 
-**Screenshot 5 — Soft limit warning in dmesg**
+**Screenshot 5 — Soft limit screenshot**
 
 <img width="1280" height="202" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/666.jpeg" />
 
 ---
 
-**Screenshot 6 — Hard limit kill in dmesg**
+**Screenshot 6 — Hard limit screenshot**
 
 <img width="1280" height="202" src="https://github.com/pranav9360/OS-Jackfruit/blob/main/Screenshot/666.jpeg" />
 
